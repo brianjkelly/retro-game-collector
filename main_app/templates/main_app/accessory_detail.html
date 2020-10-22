@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Accessory Details</h1>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ object.name }}</span>
+    <p>Description: {{ object.description }}</p>
+  </div>
+  <div class="card-action">
+    <a href="{% url 'accessorys_update' object.id %}">Edit</a>
+    <a href="{% url 'accessorys_delete' object.id %}">Delete</a>
+  </div>
+</div>
+{% endblock %}

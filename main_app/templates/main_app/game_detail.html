@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Game Details</h1>
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ object.title }}</span>
+        <p>Console: {{ object.console }}</p>
+        <p>Description: {{ object.description }}</p>
+        <p>Year: {{ object.year }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'games_update' object.id %}">Edit</a>
+        <a href="{% url 'games_delete' object.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s6">
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ playing_form.as_p }}
+      <input type="submit" value="Add Playing" class="btn">
+    </form>
+    <table class="striped">
+      <thead>
+        <tr><th>Date</th><th>Session</th></tr>
+      </thead>
+      <tbody>
+        {% for playing in game.playing_set.all %}
+          <tr>
+            <td>{{playing.date}}</td>
+            <td>{{playing.get_session_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
