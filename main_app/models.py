@@ -4,7 +4,7 @@ from django.urls import reverse
 SESSIONS = (
     ('1', 'Casual'),
     ('2', 'Competitive'),
-    ('3', 'Multiplayer')
+    ('3', 'Multiplayer'),
 )
 class Accessory(models.Model):
     name = models.CharField(max_length=100)
